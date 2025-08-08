@@ -19,9 +19,18 @@ class LinkedList {
   // @param value: integer to append
   void append(int value);
 
+  // Delete item at given index
+  void remove(int i);
+
   // Output the length and content
   // of list to the screen.
   void print();
+
+  // Output the first item in the list
+  int first();
+
+  // Output the last item in the list
+  int last();
 
   // Length of list
   int length;
