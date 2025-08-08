@@ -22,6 +22,7 @@ class LinkedList {
   // Delete item at given index
   // @param i: index to remove from
   // @throws runtime_error: removal from empty list, out of bounds
+
   void remove(int i);
 
   // Output the length and content

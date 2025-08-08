@@ -59,7 +59,13 @@ int LinkedList::last() {
 }
 
 void LinkedList::remove(int i) {
-  if (this->length == 1) { // Case when there is only one element
+  if (this->length == 0) { // Attempt to remove from empty list
+    throw std::runtime_error("cannot remove from empty LinkedList");
+
+  } else if (i >= this->length) { // Out-of-bounds error
+    throw std::runtime_error("index out of bounds when remving from LinkedList");
+
+  } else if (this->length == 1) { // Case when there is only one element
     delete this->head;
     delete this->tail;
     this->head = nullptr;
@@ -68,10 +74,28 @@ void LinkedList::remove(int i) {
     Node* oldHead = this->head; // Keep pointer to old head
     this->head = this->head->next; // Skip the first element
     delete oldHead; // Delete the old one
+    
   } else if (i == this->length - 1) {
-
+    Node* current = this->head; // Need to traverse to find node before tail
+    while(current->next != this->tail) {
+      current = current->next;
+    }
+    // Now, current points to the node *before* tail
+    delete this->tail;
+    this->tail = current;
+    
   } else {
+    Node* current = this->head;
+    int pos = 0;
+    // Grab the node *before* the one you want to delete
+    while (pos < i-1) {
+      current = current->next;
+    }
+    Node* toRemove = current->next;
 
+    // Change pointer to skip the node to be deleted
+    current->next = toRemove->next;
+    delete toRemove;
   }
 
   this->length--;
