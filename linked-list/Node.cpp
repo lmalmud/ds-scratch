@@ -8,8 +8,12 @@
 // This also allows for faster compilation, essentially
 // pasting the function prototypes.
 #include "Node.h"
-
+#include <iostream>
 Node::Node(int value, Node* next) {
   this->value = value;
   this->next = next;
+}
+
+void Node::print() {
+  std::cout << "*" << this->value << "*";
 }

@@ -8,9 +8,14 @@
 #define NODE_H
 
 class Node {
- private:
+ public:
   int value;
   Node* next;
+
+  // Default constructor
+  Node(int value, Node* next);
+
+  void print();
 };
 
 #endif
