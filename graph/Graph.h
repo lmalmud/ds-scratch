@@ -47,10 +47,17 @@ class Graph {
   // @param dest: location to start DFS
   std::vector<T> dfs(T source);
 
- private:
+  // Returns the length of a shortest path between two vertices.
+  // @param s: starting node
+  // @param t: destination node
+  // @return: the length of the shortest path between the two nodes
+  int shortest_path(T s, T t);
 
   // Print a vector.
   void print_vector(const std::vector<T>& v);
+
+ private:
+
 };
 
 #include "Graph.tpp" // Include template definitions

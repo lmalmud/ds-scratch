@@ -10,6 +10,15 @@
 #include <cassert>
 #include "Graph.h"
 
+// Assets that two vectors contain the same elements.
+// @param v1, v2: the two vectors to compare
+void assertVectors(std::vector<int> v1, std::vector<int> v2) {
+  assert(v1.size() == v2.size());
+  for (int i = 0; i < v1.size(); ++i) {
+    assert(v1.at(i) == v2.at(i));
+  }
+}
+
 int main(int argc, char** argv) {
 
   // Create graph and add one vertex
@@ -41,6 +50,20 @@ int main(int argc, char** argv) {
   // Attempt to add an edge that already exists, ensure it isn't duplicated
   graph1.add_edge(4, 5);
   assert(graph1.adj_vertices(4).size() == 2);
+
+  // Perform BFS starting from node 1
+  std::vector<int> bfsResult1 = graph1.bfs(1);
+  std::vector<int> bfsResultTrue1 = {1, 2, 3, 4, 5, 6};
+  assertVectors(bfsResult1, bfsResultTrue1);
+
+  // Perform DFS starting from node 1
+  std::vector<int> dfsResult1 = graph1.dfs(1);
+  std::vector<int> dfsResultTrue1 = {1, 3, 5, 2, 4, 6};
+  assertVectors(dfsResult1, dfsResultTrue1);
+
+  // Find te length of the shortest path between 1 and 4
+  assert(graph1.shortest_path(1, 4) == 2);
+  
   
   return 0;
 }
