@@ -12,11 +12,14 @@
 template <typename T>
 class Graph {
  public:
-  std::vector<Vertex<T> > vertices;
-  std::vector<Vertex<T>, std::vector<Vertex<T> > > edge_adj;
+  std::vector<T> vertices;
+  std::map<T, std::vector<T> > edge_adj;
 
   // Default constructor
   Graph();
+
+  // Deconstructor
+  ~Graph();
 
   // Adds a new vertex.
   // @param val: value of the node to be inserted.
@@ -26,9 +29,29 @@ class Graph {
   // @param source: vertex the edge eminates from
   // @param dest: vertex the edge points to
   void add_edge(T source, T dest);
+
+  // Returns a list of vertices that are adjacent to the
+  // specified node.
+  // @param source: node to look for adjacent vertices from
+  // @return: a vector containing adjacent nodes
+  std::vector<T> adj_vertices(T source);
+
+  // Displays the adjacency list representing the graph.
+  void print_adj();
+
+  // Performs BFS starting at the specefied source.
+  // @param source: location to start BFS
+  std::vector<T> bfs(T source);
+
+  // Performs DFS starting at the specefied source.
+  // @param dest: location to start DFS
+  std::vector<T> dfs(T source);
+
+ private:
+
+  // Print a vector.
+  void print_vector(const std::vector<T>& v);
 };
 
-template <typename T>
-Graph<T>::Graph() = default;
-
+#include "Graph.tpp" // Include template definitions
 #endif
