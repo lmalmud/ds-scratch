@@ -1,0 +1,29 @@
+/*
+  Graph.h
+  ADT for graph implemented with an adjacency list.
+ */
+
+#ifndef GRAPH_H
+#define GRAPH_H
+
+#include <vector> // For vertices
+#include <map> // For adjacency list
+#include "Edge.h"
+#include "Vertex.h"
+
+template <typename T>
+class Graph {
+ public:
+  std::vector<Vertex<T> > vertices;
+  std::vector<Edge<T> > edges;
+
+  // Default constructor
+  Graph();
+
+  // Adds a new vertex.
+  // @param val: value of the node to be inserted.
+
+  void add_vertex(T val);
+};
+
+#endif
